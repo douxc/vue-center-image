@@ -5,7 +5,7 @@
     <div :class="`vue-image-container ${inline?'vue-image-inline':''}`"
          :style="`max-width:${maxWidth};max-height:${maxWidth}`" @click="clickHandler">
         <div class="vue-image-view-container">
-            <div v-if="isPDF" class="vue-image-pdf-view"></div>
+            <div v-if="isPDF" :class="`vue-image-pdf-view ${pdfStyle}`"></div>
             <img v-else="!isPDF" width="100%" height="100%" alt="img"/>
         </div>
     </div>
@@ -116,6 +116,10 @@
             compress: {
                 type: Boolean,
                 default: true
+            },
+            pdfStyle: {
+                type: String,
+                default: 'vue-image-pdf'
             }
         },
         watch: {
@@ -173,7 +177,7 @@
         font-size: 480%;
     }
 
-    .vue-image-pdf-view::before {
+    .vue-image-pdf::before {
         content: 'PDF';
     }
 </style>
